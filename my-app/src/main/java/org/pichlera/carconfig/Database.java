@@ -3,46 +3,86 @@ package org.pichlera.carconfig;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+/**
+ * @author Andreas Pichler
+ * @version 1.0 10.10.18
+ *
+ * Dies ist die Datenbank für die Fahrzeugmodelle und ihren Ausstattungen
+ */
 public class Database {
 
-    private HashMap<String, ArrayList<Model>> modellList;
+
+    /**
+     * Liste für Modelle
+     */
+    private HashMap<String, ArrayList<Model>> modelList;
+
+    /**
+     * Liste für Ausstattungen
+     */
     private HashMap<Model, ArrayList<Outfit>> outfitList;
 
 
+    /**
+     * Erstellt Datanbank für Modelle und Aussttatungen
+     */
     public Database() {
 
-        this.modellList = new HashMap<>();
+        this.modelList = new HashMap<>();
         this.outfitList = new HashMap<>();
         fillDatabaseDemoAudi();
 
     }
 
+
+    /**
+     *
+     * @param carBrand Automarke
+     * @return gibt alle Modelle der Automarke aus
+     */
     public ArrayList<Model> getModelList(String carBrand) {
 
-        return this.modellList.get(carBrand);
+        return this.modelList.get(carBrand);
 
     }
 
-    public ArrayList<Outfit> getOutfitList(Model modell) {
+    /**
+     *
+     * @param model Modelle
+     * @return gibt alle Ausstattungen aus fuer das Modell
+     */
+    public ArrayList<Outfit> getOutfitList(Model model) {
 
-        return this.outfitList.get(modell);
+        return this.outfitList.get(model);
     }
 
-    public void addModell(String carBrand, ArrayList<Model> modList) {
 
-        this.modellList.put(carBrand, modList);
+    /**
+     * Fuegt ein Modell hinzu
+     * @param carBrand Automarke fuer Modell
+     * @param modList Modellliste
+     */
+    public void addModel(String carBrand, ArrayList<Model> modList) {
+
+        this.modelList.put(carBrand, modList);
     }
 
-    public void addOutfit(Model modell, ArrayList<Outfit> outList) {
-        this.outfitList.put(modell, outList);
+    /**
+     * Fuegt Ausstattunge hinzu mithilfe des Modells
+     * @param model Modell
+     * @param outList Ausstatungsliste
+     */
+    public void addOutfit(Model model, ArrayList<Outfit> outList) {
+        this.outfitList.put(model, outList);
     }
 
-    public HashMap<String, ArrayList<Model>> getModellList() {
-        return modellList;
+    public HashMap<String, ArrayList<Model>> getModelList() {
+        return modelList;
     }
 
-    public void setModellList(HashMap<String, ArrayList<Model>> modelList) {
-        this.modellList = modelList;
+    public void setModelList(HashMap<String, ArrayList<Model>> modelList) {
+        this.modelList = modelList;
     }
 
     public HashMap<Model, ArrayList<Outfit>> getOutfitList() {
@@ -53,6 +93,10 @@ public class Database {
         this.outfitList = outfitList;
     }
 
+
+    /**
+     * Demo Datenbank INSERT fuer Audi
+     */
     private void fillDatabaseDemoAudi() {
 
         String carBrand = "Audi";
@@ -83,7 +127,7 @@ public class Database {
         mod3Out.add(out2);
         mod3Out.add(out4);
 
-        addModell(carBrand, modelArrayList);
+        addModel(carBrand, modelArrayList);
         addOutfit(mod1, mod1Out);
         addOutfit(mod2, mod2Out);
         addOutfit(mod3, mod3Out);

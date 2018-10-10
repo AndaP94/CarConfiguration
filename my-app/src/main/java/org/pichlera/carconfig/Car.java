@@ -1,12 +1,41 @@
 package org.pichlera.carconfig;
 
-public class Car {
 
+/**
+ * @author Andreas Pichler
+ * @version 1.0 10.10.18
+ *
+ * Dies ist die Car Klasse zur Erstellung eines bestellen Autos
+ *
+ *
+ */
+public class Car {
+    /**
+     * Dies die die Automarke des Fahrzeuges
+     */
     private String carBrand;
+
+    /**
+     * Dies ist das Modell des Autos
+     */
     private Model model;
+
+    /**
+     * Dies ist die Ausstatttung des Autos
+     */
     private Outfit outfit;
+
+    /**
+     * Gesammtpreis des Fahrzeuges
+     */
     private int totalPrice;
 
+
+    /**
+     * Erstellt ein Auto mit der Automarke und setzt alles auf null
+     *
+     * @param carBrand Automarke wird übergeben
+     */
     public Car(String carBrand) {
         this.carBrand = carBrand;
         this.model = null;
@@ -44,6 +73,10 @@ public class Car {
         this.carBrand = carBrand;
     }
 
+
+    /**
+     * setzt den Preis mithilfe der einzelnen Komponenten
+     */
     public void setTotalPrice() {
         int price = 0;
         if(!(model==null)){
@@ -55,6 +88,11 @@ public class Car {
         this.totalPrice = price;
     }
 
+
+    /**
+     *
+     * @return gibt das Auto mit seinen einzlenen Komponenten aus + Gesamtpreis
+     */
     public String toString(){
         setTotalPrice();
         String output = getCarBrand() + "\n";

@@ -6,17 +6,54 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-
+/**
+ * @author Andreas Pichler
+ * @version 1.0 10.10.18
+ *
+ * Dies ist Das Userinterface und bearbeitet die einzelnen Schritte
+ */
 public class CarConfigInterface {
 
+    /**
+     * Automarke
+     */
     private String carBrand;
+
+    /**
+     * Datenbank der vorhandenen Autos von Audi
+     */
     private Database database;
+
+    /**
+     * Dies ist die Case Nummer um zu den einzelnen Schritte zu gelangen
+     */
     private int caseNumb;
+
+    /**
+     * Bestellt Auto
+     */
     private Car orderCar;
+
+    /**
+     * Scanner
+     */
     private Scanner scan;
+
+    /**
+     * Kalender
+     */
     private GregorianCalendar now;
+
+    /**
+     * Datumsvormat simple
+     */
     private DateFormat df;
 
+
+    /**
+     * Erstellt Das UserInterface und erstellt alle Teile
+     * @param carBrand übergabe der Automarke
+     */
     public CarConfigInterface(String carBrand){
 
         this.carBrand = carBrand;
@@ -29,7 +66,10 @@ public class CarConfigInterface {
 
     }
 
-
+    /**
+     *
+     * @return alle Modelle der Firma
+     */
     public String showModels(){
 
         String list = "";
@@ -44,10 +84,16 @@ public class CarConfigInterface {
 
     }
 
-    public String showOutfits(Model modell){
+
+    /**
+     *
+     * @param model übergabe des Modells von Auto
+     * @return alle Ausstattungen des Modells
+     */
+    public String showOutfits(Model model){
 
         String list = "";
-        ArrayList<Outfit> outfitArrayList = database.getOutfitList(modell);
+        ArrayList<Outfit> outfitArrayList = database.getOutfitList(model);
 
         for(int i = 0; i < outfitArrayList.size(); i++){
             list+= (i+1) + ": " + outfitArrayList.get(i).toString() + "\n";
@@ -60,6 +106,10 @@ public class CarConfigInterface {
         return this.carBrand;
     }
 
+    /**
+     *
+     * @return alle Kommandos
+     */
     private String[] getCommands(){
 
         String[] commandList = {"Start", "Quit", "Next", "Back"};
@@ -71,7 +121,9 @@ public class CarConfigInterface {
     }
 
 
-
+    /**
+     * startet das UserInterface mit den einzelnen Schritten
+     */
     public void start(){
 
         boolean check = false;
@@ -126,6 +178,10 @@ public class CarConfigInterface {
         } while (!check);
     }
 
+
+    /**
+     * Starttext
+     */
     private void startText() {
 
 
@@ -136,6 +192,9 @@ public class CarConfigInterface {
 
     }
 
+    /**
+     * Gibt alle Kommandos aus und der nächste Schritt kann ausgewaehlt werden
+     */
     private void commands() {
         int size = getCommands().length;
         String[] commandList = getCommands();
@@ -184,6 +243,10 @@ public class CarConfigInterface {
         }
     }
 
+
+    /**
+     * Erstes Schritt waehle Modell
+     */
     private void stepOneModel() {
 
         System.out.println("1. Step: Choose your Model");
@@ -205,6 +268,11 @@ public class CarConfigInterface {
 
     }
 
+
+    /**
+     * Dies ist der Eingabe Assistant
+     * @return Auswahl
+     */
     private int parser() {
         int choiceParser = 0;
         boolean checking = false;
@@ -221,6 +289,10 @@ public class CarConfigInterface {
         return choiceParser - 1;
     }
 
+
+    /**
+     * Zweiter Schritt Auswahl der Ausstatung
+     */
     private void stepTwoOutfit() {
 
 
@@ -246,6 +318,10 @@ public class CarConfigInterface {
 
     }
 
+    /**
+     *
+      * @return gibt Liefertermin zurueck
+     */
     private  String getOrderDay() {
 
         now.add(Calendar.DAY_OF_MONTH, 30);

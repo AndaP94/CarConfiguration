@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.pichlera.carconfig","l":"AppTest"}]

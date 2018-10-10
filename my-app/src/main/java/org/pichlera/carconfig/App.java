@@ -1,7 +1,10 @@
 package org.pichlera.carconfig;
 
 /**
- * Hello world!
+ * CarConfig
+ * Die App startet Den Autokonfigurator
+ * @author Andreas Pichler
+ * @version 1.0 10.10.18
  *
  */
 public class App 
